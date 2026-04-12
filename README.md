@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/context-condenser-banner.svg" alt="Context Condenser — LVM" width="100%"/>
+</div>
+
 # 🧊 Context-Condenser
 
 ### The LVM (Low-Value Management) layer for LLM-powered development.
