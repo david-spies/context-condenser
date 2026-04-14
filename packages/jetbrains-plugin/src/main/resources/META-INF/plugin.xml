@@ -1,0 +1,102 @@
+<idea-plugin>
+    <id>com.contextcondenser</id>
+    <name>Context Condenser - LVM</name>
+    <version>1.0.0</version>
+    <vendor url="https://github.com/david-spies/context-condenser">
+        Context Condenser Contributors
+    </vendor>
+
+    <description><![CDATA[
+        <h2>&#x1F9CA; Context Condenser &#x2014; LVM</h2>
+        <p><b>Cut LLM token costs by 70&#x2013;90% without leaving your IDE.</b></p>
+        <p>Stop paying to send the same boilerplate to Claude, GPT-4, or Gemini every prompt.
+        Context Condenser uses a Python AST parser to compress your code into structural
+        skeletons &#x2014; function signatures only &#x2014; and only expands the exact
+        functions the AI needs, exactly when it needs them.</p>
+        <h3>Features</h3>
+        <ul>
+            <li><b>AST-Aware Skeletonization</b> &#x2014; Uses Python&#x2019;s ast module to preserve
+                function signatures, type hints, and docstring summaries while condensing bodies to ...</li>
+            <li><b>3-Tier Condensation</b> &#x2014; Tier 1: strip comments | Tier 2: structural AST
+                (default) | Tier 3: AI-driven prose summary</li>
+            <li><b>Live Token Badge</b> &#x2014; Real-time display of raw tokens vs condensed tokens
+                with percentage saved</li>
+            <li><b>Dual Scope Modes</b> &#x2014; Toggle between Current File (micro-context) and
+                Full Project (architectural map) from the tool window</li>
+            <li><b>Smart Navigation</b> &#x2014; Double-click any def or class line in the condensed
+                view to jump directly to the source in your editor</li>
+            <li><b>One-Click AI Copy</b> &#x2014; Ctrl+Shift+Alt+C copies a formatted LLM prompt
+                with context header to your clipboard</li>
+            <li><b>Jupyter Support</b> &#x2014; Condenses .ipynb code cells, strips output cells</li>
+            <li><b>Project Skeleton</b> &#x2014; Ctrl+Shift+Alt+P generates a full Markdown
+                architectural map of your entire codebase with token budget guard</li>
+            <li><b>Auto-Index on Save</b> &#x2014; Re-indexes the active file in under 50ms
+                every time you save</li>
+        </ul>
+        <h3>Requirements</h3>
+        <ul>
+            <li>Python 3.8+ configured as the project interpreter</li>
+            <li>Run <i>Tools &#x2192; Context Condenser: Setup Python Environment</i> to install
+                tiktoken for exact token counts (optional &#x2014; falls back to estimation)</li>
+        </ul>
+        <hr/>
+        <p><i>Context Condenser 2026</i></p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <ul><li>1.0.0 - Initial release</li></ul>
+    ]]></change-notes>
+
+    <idea-version since-build="261"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends optional="true" config-file="condenser-python.xml">com.intellij.modules.python</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+            id="Context Condenser"
+            secondary="true"
+            anchor="right"
+            factoryClass="com.contextcondenser.toolwindow.CondenserToolWindowFactory"/>
+
+        <applicationService
+            serviceInterface="com.contextcondenser.services.CondenserSettings"
+            serviceImplementation="com.contextcondenser.services.CondenserSettings"/>
+
+        <applicationConfigurable
+            parentId="tools"
+            instance="com.contextcondenser.util.CondenserConfigurable"
+            id="com.contextcondenser.settings"
+            displayName="Context Condenser"/>
+
+        <notificationGroup
+            id="Context Condenser"
+            displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <action
+            id="com.contextcondenser.SendToAIChat"
+            class="com.contextcondenser.actions.SendToAIChatAction"
+            text="Send Condensed to AI"
+            description="Skeletonize current Python file and copy LLM prompt to clipboard">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt C"/>
+        </action>
+        <action
+            id="com.contextcondenser.ProjectSkeleton"
+            class="com.contextcondenser.actions.ProjectSkeletonAction"
+            text="Generate Project Skeleton"
+            description="Condense all Python files into a single architectural map">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt P"/>
+        </action>
+        <action
+            id="com.contextcondenser.SetupEnv"
+            class="com.contextcondenser.actions.SetupEnvironmentAction"
+            text="Context Condenser: Setup Python Environment"
+            description="Install tiktoken into the project Python interpreter">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
