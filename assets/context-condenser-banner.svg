@@ -66,18 +66,18 @@
   <text x="318" y="138" class="bar-label">142,500 tokens</text>
   <text x="40" y="158" class="bar-label">LVM</text>
   <rect x="72" y="149" width="22" height="10" rx="2" class="bar-lvm"/>
-  <text x="318" y="158" class="bar-pct">8,420 tokens  →  94.1% saved</text>
+  <text x="318" y="158" class="bar-pct">8,420 tokens → 94.1% saved</text>
 
-  <line x1="430" y1="108" x2="430" y2="192" class="pipe-line"/>
-  <circle cx="430" cy="118" r="5" class="pipe-dot-active"/>
-  <circle cx="430" cy="138" r="4" class="pipe-dot"/>
-  <circle cx="430" cy="158" r="4" class="pipe-dot"/>
-  <circle cx="430" cy="178" r="5" class="pipe-dot-active"/>
-  <text x="442" y="122" class="bar-label">index</text>
-  <text x="442" y="142" class="bar-label">condense</text>
-  <text x="442" y="162" class="bar-label">hydrate</text>
-  <text x="442" y="182" class="bar-label">LLM prompt</text>
-  <path d="M425,110 L418,110 L418,188 L425,188" class="bracket"/>
+  <line x1="468" y1="108" x2="468" y2="192" class="pipe-line"/>
+  <circle cx="468" cy="118" r="5" class="pipe-dot-active"/>
+  <circle cx="468" cy="138" r="4" class="pipe-dot"/>
+  <circle cx="468" cy="158" r="4" class="pipe-dot"/>
+  <circle cx="468" cy="178" r="5" class="pipe-dot-active"/>
+  <text x="480" y="122" class="bar-label">index</text>
+  <text x="480" y="142" class="bar-label">condense</text>
+  <text x="480" y="162" class="bar-label">hydrate</text>
+  <text x="480" y="182" class="bar-label">LLM prompt</text>
+  <path d="M470,110 L463,110 L463,188 L470,188" class="bracket"/>
 
   <text x="540" y="122" class="label-tag" text-anchor="start">WORKS WITH</text>
   <rect x="540" y="130" width="40" height="14" rx="2" fill="#1e2d3d" stroke="#8b949e30" stroke-width="0.5"/>
