@@ -346,7 +346,7 @@ Tests cover: symbol extraction, import mapping, dependency resolution, skeleton 
 - [ ] SQLite persistence for repos > 10k files
 - [ ] GitHub Action: block PRs that exceed token budget
 - [ ] Neovim plugin
-- [ ] JetBrains plugin
+- [x] JetBrains plugin
 
 ---
 
